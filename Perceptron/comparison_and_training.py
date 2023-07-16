@@ -106,56 +106,140 @@
 #     print("Derivative:" + str(derivative))
 
 # ------------------------ Обучение методом градиентного спуска с несколькими входами ------------------------ #
-def w_sum(a, b):
-    assert (len(a) == len(b))
-    output = 0
-    for i in range(len(a)):
-        output += (a[i] * b[i])
-    return output
+# def w_sum(a, b):
+#     assert (len(a) == len(b))
+#     output = 0
+#     for i in range(len(a)):
+#         output += (a[i] * b[i])
+#     return output
+#
+#
+# weights = [.1, .2, -.1]
+#
+#
+# def neural_network(input, weights):
+#     pred = w_sum(input, weights)
+#     return pred
+#
+#
+# toes = [8.5 , 9.5, 9.9, 9.0]
+# wlrec = [0.65, 0.8, 0.8, 0.9]
+# nfans = [1.2 , 1.3, 0.5, 1.0]
+# win_or_lose_binary = [1, 1, 0, 1]
+# true = win_or_lose_binary[0]
+# input = [toes[0], wlrec[0], nfans[0]]
+# pred = neural_network(input, weights)
+# error = (pred - true) ** 2
+# delta = pred - true
+#
+#
+# def ele_mul (number, vector):
+#     output = [0, 0, 0]
+#     assert (len(output) == len(vector))
+#     for i in range(len(vector)):
+#         output[i] = number * vector[i]
+#     return output
+#
+#
+# weight_deltas = ele_mul(delta, input)
+# alpha = 0.01
+# for i in range(len(weights)):
+#     weights[i] -= alpha * weight_deltas[i]
+# print(f"Weights: {weights}")
+# print(f"Weights deltas: {weight_deltas}")
 
+# ------------------------ Обучение методом градиентного спуска с несколькими выходами ------------------------ #
+# weights = [.3, .2, .9]
+#
+#
+# def ele_mul(number, vector):
+#     output = [0, 0, 0]
+#     assert (len(output) == len(vector))
+#     for i in range(len(vector)):
+#         output[i] = number * vector[i]
+#     return output
+#
+#
+# def neural_network(input, weights):
+#     pred = ele_mul(input, weights)
+#     return pred
+#
+#
+# wlrec = [0.65, 1.0, 1.0, 0.9]
+# hurt = [0.1, 0.0, 0.0, 0.1]
+# win = [1, 1, 0, 1]
+# sad = [0.1, 0.0, 0.1, 0.2]
+# input = wlrec[0]
+# true = [hurt[0], win[0], sad[0]]
+# pred = neural_network(input, weights)
+# error = [0,0,0]
+# delta = [0,0,0]
+# for i in range(len(true)):
+#     error[i] = (pred[i] - true[i]) ** 2
+#     delta[i] = pred[i] - true[i]
+# weight_deltas = ele_mul(input, weights)
+# alpha = .1
+# for i in range(len(weights)):
+#     weights[i] -= weight_deltas[i] * alpha
+# print("Weights:" + str(weights))
+# print("Weight Deltas:" + str(weight_deltas))
 
-weights = [.1, .2, -.1]
-
-
-def neural_network(input, weights):
-    pred = w_sum(input, weights)
-    return pred
-
-
-toes = [8.5 , 9.5, 9.9, 9.0]
-wlrec = [0.65, 0.8, 0.8, 0.9]
-nfans = [1.2 , 1.3, 0.5, 1.0]
-win_or_lose_binary = [1, 1, 0, 1]
-true = win_or_lose_binary[0]
-input = [toes[0], wlrec[0], nfans[0]]
-pred = neural_network(input, weights)
-error = (pred - true) ** 2
-delta = pred - true
-
-
-def ele_mul (number, vector):
-    output = [0, 0, 0]
-    assert (len(output) == len(vector))
-    for i in range(len(vector)):
-        output[i] = number * vector[i]
-    return output
-
-
-weight_deltas = ele_mul(delta, input)
-alpha = 0.01
-for i in range(len(weights)):
-    weights[i] -= alpha * weight_deltas[i]
-print(f"Weights: {weights}")
-print(f"Weights deltas: {weight_deltas}")
-
-
-
-
-
-
-
-
-
+# ------------------------ Обучение методом градиентного спуска с несколькими входами и выходами ------------------------ #
+# weights = [[0.1, 0.1, -0.3],
+#            [0.1, 0.2, 0.0],
+#            [0.0, 1.3, 0.1]]
+#
+#
+# def w_sum(a, b):
+#     assert (len(a) == len(b))
+#     output = 0
+#     for i in range(len(a)):
+#         output += (a[i] * b[i])
+#     return output
+#
+#
+# def vect_mat_mul(vector, matrix):
+#     assert (len(vector) == len(matrix))
+#     output = [0,0,0]
+#     for i in range(len(vector)):
+#         output[i] = w_sum(vector, matrix[i])
+#     return output
+#
+#
+# def zeros_matrix(vec_a, vec_b):
+#     out = [[0 for _ in range(len(vec_b))] for _ in range(len(vec_a))]
+#     return out
+#
+#
+# def outer_prod(vec_a, vec_b):
+#     out = zeros_matrix(vec_a, vec_b)
+#     for i in range(len(vec_a)):
+#         for j in range(len(vec_b)):
+#             out[i][j] = vec_a[i]*vec_b[i][j]
+#     return out
+#
+#
+# def neural_network(input, weights):
+#     pred = vect_mat_mul(input, weights)
+#     return pred
+#
+#
+# toes = [8.5, 9.5, 9.9, 9.0]
+# wlrec = [0.65, 0.8, 0.8, 0.9]
+# nfans = [1.2, 1.3, 0.5, 1.0]
+# hurt = [0.1, 0.0, 0.0, 0.1]
+# win = [ 1, 1, 0, 1]
+# sad = [0.1, 0.0, 0.1, 0.2]
+# alpha = 0.01
+# input = [toes[0],wlrec[0],nfans[0]]
+# true = [hurt[0], win[0], sad[0]]
+# pred = neural_network(input,weights)
+# error = [0,0,0]
+# delta = [0,0,0]
+# for i in range(len(true)):
+#     error[i] = (pred[i] - true[i]) ** 2
+#     delta[i] = pred[i] - true[i]
+# weight_deltas = outer_prod(input, weights)
 
 
 
